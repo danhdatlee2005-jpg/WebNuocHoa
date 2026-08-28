@@ -1,0 +1,16 @@
+com\ecommerce\promotion\dto\PromotionDtoWrapper$CouponValidationResult$CouponValidationResultBuilder.class
+com\ecommerce\promotion\dto\PromotionDtoWrapper$CouponValidateRequest$CouponValidateRequestBuilder.class
+com\ecommerce\promotion\dto\PromotionDtoWrapper$CouponDto.class
+com\ecommerce\promotion\PromotionApplication.class
+com\ecommerce\promotion\repository\CouponRepository.class
+com\ecommerce\promotion\dto\PromotionDtoWrapper$CouponCreateRequest$CouponCreateRequestBuilder.class
+com\ecommerce\promotion\controller\PromotionController.class
+com\ecommerce\promotion\dto\PromotionDtoWrapper$CouponCreateRequest.class
+com\ecommerce\promotion\entity\Coupon.class
+com\ecommerce\promotion\dto\PromotionDtoWrapper$CouponValidationResult.class
+com\ecommerce\promotion\entity\Coupon$CouponBuilder.class
+com\ecommerce\promotion\service\PromotionService.class
+com\ecommerce\promotion\controller\AdminPromotionController.class
+com\ecommerce\promotion\dto\PromotionDtoWrapper.class
+com\ecommerce\promotion\dto\PromotionDtoWrapper$CouponDto$CouponDtoBuilder.class
+com\ecommerce\promotion\dto\PromotionDtoWrapper$CouponValidateRequest.class

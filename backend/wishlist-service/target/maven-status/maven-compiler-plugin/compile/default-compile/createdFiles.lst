@@ -1,0 +1,11 @@
+com\ecommerce\wishlist\controller\WishlistController.class
+com\ecommerce\wishlist\dto\WishlistDtoWrapper$WishlistItemDto$WishlistItemDtoBuilder.class
+com\ecommerce\wishlist\entity\WishlistItem.class
+com\ecommerce\wishlist\service\WishlistService.class
+com\ecommerce\wishlist\dto\WishlistDtoWrapper.class
+com\ecommerce\wishlist\dto\WishlistDtoWrapper$AddToWishlistRequest$AddToWishlistRequestBuilder.class
+com\ecommerce\wishlist\WishlistServiceApplication.class
+com\ecommerce\wishlist\repository\WishlistItemRepository.class
+com\ecommerce\wishlist\dto\WishlistDtoWrapper$AddToWishlistRequest.class
+com\ecommerce\wishlist\dto\WishlistDtoWrapper$WishlistItemDto.class
+com\ecommerce\wishlist\entity\WishlistItem$WishlistItemBuilder.class

@@ -1,0 +1,8 @@
+com\ecommerce\admin\repository\DailyStatisticRepository.class
+com\ecommerce\admin\entity\DailyStatistic$DailyStatisticBuilder.class
+com\ecommerce\admin\controller\DashboardController.class
+com\ecommerce\admin\entity\DailyStatistic.class
+com\ecommerce\admin\AdminApplication.class
+com\ecommerce\admin\messaging\AdminEventListener.class
+com\ecommerce\admin\messaging\RabbitMQConfig.class
+com\ecommerce\admin\service\AdminStatisticService.class

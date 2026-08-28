@@ -1,0 +1,8 @@
+com\ecommerce\notification\messaging\RabbitMQConfig.class
+com\ecommerce\notification\NotificationApplication.class
+com\ecommerce\notification\entity\Notification.class
+com\ecommerce\notification\controller\NotificationController.class
+com\ecommerce\notification\service\NotificationService.class
+com\ecommerce\notification\repository\NotificationRepository.class
+com\ecommerce\notification\entity\Notification$NotificationBuilder.class
+com\ecommerce\notification\messaging\NotificationEventListener.class

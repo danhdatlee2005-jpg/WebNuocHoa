@@ -1,0 +1,32 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: shipping-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shipping_db
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+ecommerce:
+  rabbitmq:
+    exchange: ecommerce.topic.exchange
+    queues:
+      shipping-events-queue: ecommerce.shipping.events.queue
+    routing-keys:
+      payment-completed: payment.completed
+      order-confirmed: order.confirmed
+      shipment-updated: shipment.updated

@@ -1,0 +1,164 @@
+stages:
+  - build
+  - test
+  - docker
+  - deploy
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  DOCKER_REGISTRY: $CI_REGISTRY
+  IMAGE_TAG: $CI_COMMIT_SHORT_SHA
+
+# Cache Maven dependencies
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .m2/repository
+
+# ============================================================
+# Stage 1: Build - Compile and package all Java microservices
+# ============================================================
+build-backend:
+  stage: build
+  image: maven:3.9.6-eclipse-temurin-17
+  script:
+    - echo "Building all microservices..."
+    - cd backend
+    - mvn clean package -DskipTests --batch-mode
+  artifacts:
+    paths:
+      - backend/*/target/*.jar
+    expire_in: 1 hour
+  only:
+    - main
+    - develop
+    - merge_requests
+
+build-frontend:
+  stage: build
+  image: node:20-alpine
+  script:
+    - echo "Building Next.js frontend..."
+    - cd frontend
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - frontend/.next/
+    expire_in: 1 hour
+  only:
+    - main
+    - develop
+    - merge_requests
+
+# ============================================================
+# Stage 2: Test
+# ============================================================
+test-backend:
+  stage: test
+  image: maven:3.9.6-eclipse-temurin-17
+  script:
+    - echo "Running unit tests..."
+    - cd backend
+    - mvn test --batch-mode
+  allow_failure: true
+  only:
+    - main
+    - develop
+    - merge_requests
+
+# ============================================================
+# Stage 3: Docker - Build and push images to GitLab Registry
+# ============================================================
+.docker-build-template: &docker-build
+  stage: docker
+  image: docker:24-dind
+  services:
+    - docker:24-dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  only:
+    - main
+
+docker-auth-service:
+  <<: *docker-build
+  script:
+    - docker build --build-arg SERVICE_NAME=auth-service -t $CI_REGISTRY_IMAGE/auth-service:$IMAGE_TAG -t $CI_REGISTRY_IMAGE/auth-service:latest ./backend
+    - docker push $CI_REGISTRY_IMAGE/auth-service:$IMAGE_TAG
+    - docker push $CI_REGISTRY_IMAGE/auth-service:latest
+
+docker-user-service:
+  <<: *docker-build
+  script:
+    - docker build --build-arg SERVICE_NAME=user-service -t $CI_REGISTRY_IMAGE/user-service:$IMAGE_TAG -t $CI_REGISTRY_IMAGE/user-service:latest ./backend
+    - docker push $CI_REGISTRY_IMAGE/user-service:$IMAGE_TAG
+    - docker push $CI_REGISTRY_IMAGE/user-service:latest
+
+docker-product-service:
+  <<: *docker-build
+  script:
+    - docker build --build-arg SERVICE_NAME=product-service -t $CI_REGISTRY_IMAGE/product-service:$IMAGE_TAG -t $CI_REGISTRY_IMAGE/product-service:latest ./backend
+    - docker push $CI_REGISTRY_IMAGE/product-service:$IMAGE_TAG
+    - docker push $CI_REGISTRY_IMAGE/product-service:latest
+
+docker-order-service:
+  <<: *docker-build
+  script:
+    - docker build --build-arg SERVICE_NAME=order-service -t $CI_REGISTRY_IMAGE/order-service:$IMAGE_TAG -t $CI_REGISTRY_IMAGE/order-service:latest ./backend
+    - docker push $CI_REGISTRY_IMAGE/order-service:$IMAGE_TAG
+    - docker push $CI_REGISTRY_IMAGE/order-service:latest
+
+docker-payment-service:
+  <<: *docker-build
+  script:
+    - docker build --build-arg SERVICE_NAME=payment-service -t $CI_REGISTRY_IMAGE/payment-service:$IMAGE_TAG -t $CI_REGISTRY_IMAGE/payment-service:latest ./backend
+    - docker push $CI_REGISTRY_IMAGE/payment-service:$IMAGE_TAG
+    - docker push $CI_REGISTRY_IMAGE/payment-service:latest
+
+docker-notification-service:
+  <<: *docker-build
+  script:
+    - docker build --build-arg SERVICE_NAME=notification-service -t $CI_REGISTRY_IMAGE/notification-service:$IMAGE_TAG -t $CI_REGISTRY_IMAGE/notification-service:latest ./backend
+    - docker push $CI_REGISTRY_IMAGE/notification-service:$IMAGE_TAG
+    - docker push $CI_REGISTRY_IMAGE/notification-service:latest
+
+docker-frontend:
+  stage: docker
+  image: docker:24-dind
+  services:
+    - docker:24-dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/frontend:$IMAGE_TAG -t $CI_REGISTRY_IMAGE/frontend:latest ./frontend
+    - docker push $CI_REGISTRY_IMAGE/frontend:$IMAGE_TAG
+    - docker push $CI_REGISTRY_IMAGE/frontend:latest
+  only:
+    - main
+
+# ============================================================
+# Stage 4: Deploy to production server via SSH
+# ============================================================
+deploy-production:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - ssh-keyscan -H $PRODUCTION_SERVER_IP >> ~/.ssh/known_hosts
+  script:
+    - echo "Deploying to production server..."
+    - ssh $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER_IP "
+        cd /opt/ecommerce &&
+        docker-compose pull &&
+        docker-compose up -d --remove-orphans &&
+        echo 'Deployment successful!'
+      "
+  environment:
+    name: production
+    url: http://$PRODUCTION_SERVER_IP
+  only:
+    - main
+  when: manual

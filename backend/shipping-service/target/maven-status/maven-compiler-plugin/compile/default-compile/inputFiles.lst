@@ -1,0 +1,10 @@
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\entity\Shipment.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\messaging\RabbitMQConfig.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\service\ShippingService.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\ShippingApplication.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\entity\ShippingMethod.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\entity\ShipmentStatus.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\messaging\SagaEventListener.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\repository\ShipmentRepository.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\controller\ShippingController.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\shipping-service\src\main\java\com\ecommerce\shipping\repository\ShippingMethodRepository.java

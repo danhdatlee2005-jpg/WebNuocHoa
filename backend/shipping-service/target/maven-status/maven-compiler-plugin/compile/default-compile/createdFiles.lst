@@ -1,0 +1,12 @@
+com\ecommerce\shipping\controller\ShippingController.class
+com\ecommerce\shipping\entity\Shipment.class
+com\ecommerce\shipping\entity\ShipmentStatus.class
+com\ecommerce\shipping\repository\ShippingMethodRepository.class
+com\ecommerce\shipping\ShippingApplication.class
+com\ecommerce\shipping\messaging\SagaEventListener.class
+com\ecommerce\shipping\entity\ShippingMethod.class
+com\ecommerce\shipping\entity\Shipment$ShipmentBuilder.class
+com\ecommerce\shipping\messaging\RabbitMQConfig.class
+com\ecommerce\shipping\service\ShippingService.class
+com\ecommerce\shipping\repository\ShipmentRepository.class
+com\ecommerce\shipping\entity\ShippingMethod$ShippingMethodBuilder.class

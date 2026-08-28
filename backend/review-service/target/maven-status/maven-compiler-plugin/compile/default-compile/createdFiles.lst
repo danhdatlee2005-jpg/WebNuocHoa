@@ -1,0 +1,7 @@
+com\ecommerce\review\entity\Review$ReviewBuilder.class
+com\ecommerce\review\entity\Review.class
+com\ecommerce\review\controller\AdminReviewController.class
+com\ecommerce\review\controller\ReviewController.class
+com\ecommerce\review\repository\ReviewRepository.class
+com\ecommerce\review\ReviewApplication.class
+com\ecommerce\review\service\ReviewService.class

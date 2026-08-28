@@ -1,0 +1,141 @@
+_format_version: "3.0"
+services:
+  - name: auth-service
+    url: http://auth-service:8081
+    routes:
+      - name: auth-route
+        paths:
+          - /api/v1/auth
+        strip_path: false
+
+  - name: user-service
+    url: http://user-service:8082
+    routes:
+      - name: user-route
+        paths:
+          - /api/v1/users
+          - /api/v1/admin/users
+        strip_path: false
+
+  - name: product-service
+    url: http://product-service:8083
+    routes:
+      - name: product-route
+        paths:
+          - /api/v1/products
+          - /api/v1/categories
+          - /api/v1/brands
+          - /api/v1/admin/products
+        strip_path: false
+
+  - name: cart-service
+    url: http://cart-service:8084
+    routes:
+      - name: cart-route
+        paths:
+          - /api/v1/cart
+        strip_path: false
+
+  - name: wishlist-service
+    url: http://wishlist-service:8085
+    routes:
+      - name: wishlist-route
+        paths:
+          - /api/v1/wishlist
+        strip_path: false
+
+  - name: order-service
+    url: http://order-service:8086
+    routes:
+      - name: order-route
+        paths:
+          - /api/v1/orders
+          - /api/v1/admin/orders
+        strip_path: false
+
+  - name: inventory-service
+    url: http://inventory-service:8087
+    routes:
+      - name: inventory-route
+        paths:
+          - /api/v1/inventory
+          - /api/v1/admin/inventory
+        strip_path: false
+
+  - name: payment-service
+    url: http://payment-service:8088
+    routes:
+      - name: payment-route
+        paths:
+          - /api/v1/payment
+        strip_path: false
+
+  - name: promotion-service
+    url: http://promotion-service:8089
+    routes:
+      - name: promotion-route
+        paths:
+          - /api/v1/promotions
+          - /api/v1/coupons
+          - /api/v1/admin/coupons
+          - /api/v1/admin/promotions
+        strip_path: false
+
+  - name: shipping-service
+    url: http://shipping-service:8090
+    routes:
+      - name: shipping-route
+        paths:
+          - /api/v1/shipping
+        strip_path: false
+
+  - name: review-service
+    url: http://review-service:8091
+    routes:
+      - name: review-route
+        paths:
+          - /api/v1/reviews
+          - /api/v1/admin/reviews
+        strip_path: false
+
+
+  - name: notification-service
+    url: http://notification-service:8092
+    routes:
+      - name: notification-route
+        paths:
+          - /api/v1/notifications
+        strip_path: false
+
+  - name: admin-service
+    url: http://admin-service:8093
+    routes:
+      - name: admin-route
+        paths:
+          - /api/v1/admin/dashboard
+          - /api/v1/admin/statistics
+        strip_path: false
+plugins:  
+  - name: cors  
+    config:  
+      origins:  
+        - '*'  
+      methods:  
+        - GET  
+        - POST  
+        - PUT  
+        - PATCH  
+        - DELETE  
+        - OPTIONS  
+      headers:  
+        - Accept  
+        - Accept-Version  
+        - Content-Length  
+        - Content-MD5  
+        - Content-Type  
+        - Date  
+        - Authorization  
+      exposed_headers:  
+        - Authorization  
+      credentials: false  
+      max_age: 3600 

@@ -1,0 +1,17 @@
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\dto\InventoryDtoWrapper.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\repository\InventoryReservationRepository.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\config\InventoryDataInitializer.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\entity\InventoryItem.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\config\RabbitMQInventoryConfig.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\event\InventoryEventPublisher.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\entity\InventoryTransaction.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\repository\ProcessedEventRepository.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\controller\AdminInventoryController.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\controller\InventoryController.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\repository\InventoryTransactionRepository.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\service\InventoryService.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\InventoryServiceApplication.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\entity\ProcessedEvent.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\repository\InventoryItemRepository.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\consumer\InventorySagaConsumer.java
+D:\Downloads\Web_NH_Microservice\Web_NH_Microservice\backend\inventory-service\src\main\java\com\ecommerce\inventory\entity\InventoryReservation.java

@@ -1,0 +1,26 @@
+﻿{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [{ "text": "tôi là con trai, hãy tư vấn cho tôi loại nước hoa phù hợp" }]
+    },
+    {
+      "role": "model",
+      "parts": [{
+        "functionCall": {
+          "name": "get_recommendation",
+          "args": { "gender": "Nam", "limit": 3 }
+        }
+      }]
+    },
+    {
+      "role": "user",
+      "parts": [{
+        "functionResponse": {
+          "name": "get_recommendation",
+          "response": { "products": [] }
+        }
+      }]
+    }
+  ]
+}
